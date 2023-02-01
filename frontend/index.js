@@ -17,7 +17,7 @@ function sendDirection(direction) {
             direction: direction
         })
     })
-    .then((response) => { return response.json() })
+    .then((response) => response.json())
     .then((data) => console.log(data))
     .catch((error) => console.log(error))
 }
