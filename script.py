@@ -20,6 +20,10 @@ ssid = 'Ouioui'
 password = 'pwdman02'
 wlan.connect(ssid, password)
 url = "http://192.168.154.133:3000/"
+while not wlan.isconnected():
+    print("no co")
+    sleep(1)
+
 
 while True:
     try:
@@ -28,10 +32,10 @@ while True:
 
         if data == 'forward':
             print('en avant') 
-            speed.duty_u16(10000)
+            speed.duty_u16(60000)
             IN1.low()  #spin forward
             IN2.high()
-            sleep(5)
+            
         elif data == 'backward':
             print('en arrière')    
             speed.duty_u16(20000)
@@ -47,7 +51,7 @@ while True:
         print(data)
         r.close()
         utime.sleep(1)
-        
+
     except Exception as e:
         print(e) 
 
