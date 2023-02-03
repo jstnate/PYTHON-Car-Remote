@@ -17,9 +17,15 @@ speed2 = PWM(Pin(20))
 speed2.freq(1000)
 speed.freq(1000)
 
-BlueLed = 1
-WhiteLed = 2
-RedLed = 3
+BlueLed = Pin(12, mode=Pin.OUT)
+WhiteLed = Pin(11, mode=Pin.OUT)
+RedLed = Pin(10, mode=Pin.OUT)
+
+buzzer = PWM(Pin(9))
+buzzer.freq(740)
+
+Fsharp = 740
+C = 523
 
 
 
@@ -43,8 +49,25 @@ while True:
         girophares = r.json()["giro"]
 
         if girophares == 'on':
-            print('LA POLICE')
+            buzzer.duty_u16(4000)
+            buzzer.freq(Fsharp)
 
+            print('LA POLICE')
+            BlueLed.on()
+            utime.sleep(0.2)
+            BlueLed.off()
+            buzzer.freq(C)
+
+            WhiteLed.on()
+            utime.sleep(0.2)
+            WhiteLed.off()
+            buzzer.freq(Fsharp)
+
+            RedLed.on()
+            utime.sleep(0.2)
+            RedLed.off()
+            buzzer.freq(C)
+            utime.sleep(0.2)
 
         if direction == 'forward':
             print('en avant') 
@@ -94,11 +117,10 @@ while True:
             IN2.low()
             IN4.low()
             IN3.low()
+            buzzer.duty_u16(0)
 
         print(direction)
         r.close()
-        utime.sleep(1)
 
     except Exception as e:
         print('eroor')
-
