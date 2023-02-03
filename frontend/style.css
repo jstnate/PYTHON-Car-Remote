@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 500px;
+    aspect-ratio: 2/1;
+    place-items: center;
+}
+
+button {
+    background: rgb(254, 199, 49);
+    font-size: 24px;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+    box-shadow: inset 10px 10px 10px rgba(71, 71, 71, 0.1);
+}
+
+#forward {
+    width: 90%;
+    height: 80%;
+    grid-column: 2 / 4;
+    grid-row: 1/2;
+}
+
+#backward {
+    width: 90%;
+    height: 80%;
+    grid-column: 2 / 4;
+    grid-row: 2/3;
+}
+
+#left {
+    width: 70%;
+    height: 90%;
+    grid-column: 1/2;
+    grid-row: 1/3;
+}
+
+#right {
+    width: 70%;
+    height: 90%;
+    grid-column: 4/5;
+    grid-row: 1/3;
+}
+
+#stop {
+    background: rgb(255, 80, 80);
+    color: white;
+    width: 70%;
+    height: 70%;
+    grid-column: 1/3;
+    grid-row: 3/4;
+}
+
+#giro {
+    color: white;
+    background: rgb(90, 90, 252);
+    width: 70%;
+    height: 70%;
+    grid-column: 3/5;
+    grid-row: 3/4;
+}
