@@ -1,8 +1,10 @@
+
 import network
 import urequests
 import ujson
 import utime
 from time import sleep
+import _thread
 from machine import Pin, PWM
 
 
@@ -42,32 +44,41 @@ while not wlan.isconnected():
     sleep(1)
 
 
+
+def buzzer_function():
+    
+    for cycle in range(30000):
+        buzzer.freq(Fsharp)
+        buzzer.duty_u16(cycle)
+        buzzer.duty_u16(0)
+    for cycle in range(30000):
+        buzzer.freq(C)
+        buzzer.duty_u16(30000 - cycle)
+
+
 while True:
     try:
         r = urequests.get(url)
         direction = r.json()["direction"]
         girophares = r.json()["giro"]
+        
 
         if girophares == 'on':
-            buzzer.duty_u16(4000)
-            buzzer.freq(Fsharp)
 
-            print('LA POLICE')
+            _thread.start_new_thread(buzzer_function, ())
+
             BlueLed.on()
             utime.sleep(0.2)
             BlueLed.off()
-            buzzer.freq(C)
 
             WhiteLed.on()
             utime.sleep(0.2)
             WhiteLed.off()
-            buzzer.freq(Fsharp)
 
             RedLed.on()
             utime.sleep(0.2)
             RedLed.off()
-            buzzer.freq(C)
-            utime.sleep(0.2)
+
 
         if direction == 'forward':
             print('en avant') 
@@ -122,5 +133,5 @@ while True:
         print(direction)
         r.close()
 
-    except Exception as e:
-        print('eroor')
+    except Exception as h:
+        print(h)

@@ -2,7 +2,7 @@ const buttonKey = document.querySelectorAll('button');
 const url = 'http://127.0.0.1:3000/'
 const giro = document.getElementById('giro')
 let giroStatus = 'off'
-let direction
+let direction = 'stop'
 
 buttonKey.forEach((button) => {
     button.addEventListener('click', (e) => {
