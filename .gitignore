@@ -1,11 +1,3 @@
 node_modules
 .idea
 .DS_Store
-
-    for cycle in range(30000):
-        buzzer.freq(Fsharp)
-        buzzer.duty_u16(cycle)
-        buzzer.duty_u16(0)
-    for cycle in range(30000):
-        buzzer.freq(C)
-        buzzer.duty_u16(30000 - cycle)
