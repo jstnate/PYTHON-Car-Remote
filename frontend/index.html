@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/b050931f68.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
     <div>
-        <button value="forward">Top</button>
-        <button value="right">Right</button>
-        <button value="backward">Bottom</button>
-        <button value="left">Left</button>
-        <button value="stop">STOP</button>
-        <input type="submit" value="giro" placeholder="girophare" id="giro">
+        <button class="direction-key" value="forward" id="forward"><i class="fa-solid fa-chevron-up"></i></button>
+        <button class="direction-key" value="right" id="right"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="direction-key" value="backward" id="backward"><i class="fa-solid fa-chevron-down"></i></button>
+        <button class="direction-key" value="left" id="left"><i class="fa-solid fa-chevron-left"></i></button>
+        <button value="stop" id="stop"><i class="fa-solid fa-hand"></i></button>
+        <button value="Girophares" id="giro"><i class="fa-solid fa-lightbulb"></i></button>
     </div>    
     <script src="index.js"></script>
 </body>
