@@ -17,6 +17,10 @@ speed2 = PWM(Pin(20))
 speed2.freq(1000)
 speed.freq(1000)
 
+BlueLed = 1
+WhiteLed = 2
+RedLed = 3
+
 
 
 
@@ -35,17 +39,22 @@ while not wlan.isconnected():
 while True:
     try:
         r = urequests.get(url)
-        data = r.json()["direction"]
+        direction = r.json()["direction"]
+        girophares = r.json()["giro"]
 
-        if data == 'forward':
+        if girophares == 'on':
+            print('LA POLICE')
+
+
+        if direction == 'forward':
             print('en avant') 
-            speed.duty_u16(60000)
-            speed2.duty_u16(60000)
+            speed.duty_u16(40000)
+            speed2.duty_u16(40000)
             IN1.low()
             IN2.high()
             IN4.low()
             IN3.high()
-        elif data == 'backward':
+        elif direction == 'backward':
             print('en arrière')    
             speed.duty_u16(20000)
             speed2.duty_u16(20000)
@@ -55,34 +64,41 @@ while True:
             IN3.low()
 
             sleep(5)
-        elif data == 'right':
+        elif direction == 'right':
             print('à droite')
-            speed.duty_u16(20000)
-            speed2.duty_u16(20000)
-            IN1.high()
-            IN2.low()
+            IN1.low()
+            IN2.high()
+            IN4.low()
+            IN3.high()
+            speed.duty_u16(30000)
+            speed2.duty_u16(30000)
+            IN1.low()
+            IN2.high()
             IN4.low()
             IN3.low()
-        elif data == 'left':
+        elif direction == 'left':
             print('à gauche')
-            speed.duty_u16(20000)
-            speed2.duty_u16(20000)
+            IN1.low()
+            IN2.high()
+            IN4.low()
+            IN3.high()
+            speed.duty_u16(30000)
+            speed2.duty_u16(30000)
             IN1.low()
             IN2.low()
-            IN4.high()
-            IN3.low()    
-        elif data == 'stop':
+            IN4.low()
+            IN3.high()    
+        elif direction == 'stop':
             print('stop')
             IN1.low()
             IN2.low()
             IN4.low()
             IN3.low()
 
-        print(data)
+        print(direction)
         r.close()
         utime.sleep(1)
 
     except Exception as e:
-        print(e) 
-
+        print('eroor')
 

@@ -1,20 +1,31 @@
 const buttonKey = document.querySelectorAll('button');
 const url = 'http://127.0.0.1:3000/'
+const giro = document.getElementById('giro')
+let giroStatus = 'off'
+let direction
 
 buttonKey.forEach((button) => {
     button.addEventListener('click', (e) => {
-        sendDirection(e.target.value)
+        direction = e.target.value
+        sendDirection(direction, giroStatus)
     })
 });
 
-function sendDirection(direction) {
+giro.addEventListener('click', e=>{
+    giroStatus === 'off' ? giroStatus = 'on' : giroStatus = 'off'
+    sendDirection(direction, giroStatus)
+})
+
+
+function sendDirection(direction, giro) {
     fetch(url, {
         method: 'POST',
         headers: {
             'content-type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify({
-            direction: direction
+            direction: direction,
+            giro: giro
         })
     })
     .then((response) => response.json())
