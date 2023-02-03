@@ -39,3 +39,7 @@ There are 6 buttons on the remote.
 ## 4. Credits
 
 This project has been done by **Nathan Lefetey** and **Adam Simon**
+
+Here is a link of the demonstration of the car: 
+
+https://youtu.be/pVj3BaD1Q_E
