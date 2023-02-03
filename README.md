@@ -19,6 +19,9 @@ To install this project on your computer you will need to :
     - A Driver Motor
     - 2 motors (GearMotor Yellow)
 
+This is how to plug everything : 
+<img src="schema.jpg" alt="">
+
 ## 3. How to use
 
 You're now ready to use the remote control and the car ! 
